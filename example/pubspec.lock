@@ -200,7 +200,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.2.6"
+    version: "0.0.1"
   simple_sparse_list:
     dependency: transitive
     description:
