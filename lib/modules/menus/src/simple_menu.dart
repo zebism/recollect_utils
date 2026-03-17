@@ -137,7 +137,7 @@ class SimpleMenu<T> extends StatefulWidget {
     this.initialSelection,
     this.onSelected,
     this.height = 40,
-    this.width,
+    this.width = 200,
     this.label,
     this.decoration = const BoxDecoration(
       color: Colours.white,
@@ -147,8 +147,8 @@ class SimpleMenu<T> extends StatefulWidget {
 
   final List<MenuItem> items;
   final VoidCallback setStateCallback;
-  final double? height;
-  final double? width;
+  final double height;
+  final double width;
   final T? initialSelection;
   final ValueChanged<T?>? onSelected;
   final String? label;
@@ -172,24 +172,24 @@ class _SimpleMenuState<T> extends State<SimpleMenu<T>> {
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
       link: _layerLink,
-      child: Container(
-        height: widget.height,
-        width: widget.width,
-        decoration: widget.decoration,
-        child: InkWell(
-          onTap: _toggleOverlay,
-          child: InputDecorator(
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              label: widget.label != null ? Word(widget.label!) : null,
-              suffixIcon: Icon(
+      child: GestureDetector(
+        onTap: _toggleOverlay,
+        child: Container(
+          height: widget.height,
+          width: widget.width,
+          decoration: widget.decoration,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            children: [
+              if (widget.label != null) ...[
+                Text(widget.label!),
+                const SizedBox(width: 8),
+              ],
+              Expanded(child: Text(_displayText)),
+              Icon(
                 _isOverlayVisible ? Icons.arrow_drop_up : Icons.arrow_drop_down,
               ),
-            ),
-            child: Text(
-              _displayText,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+            ],
           ),
         ),
       ),

@@ -188,7 +188,6 @@ class _FilteredMenuState<T> extends State<FilteredMenu<T>> {
             focusedErrorBorder: InputBorder.none,
             hoverColor: Colours.transparent,
             focusColor: Colours.transparent,
-
             suffixIcon: IconButton(
               icon: _isOverlayVisible
                   ? const Icon(Icons.arrow_drop_up)
