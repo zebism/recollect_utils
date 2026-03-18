@@ -141,6 +141,7 @@ class SuggestionField extends StatefulWidget {
   final InputDecoration inputDecoration;
   final AlignType alignDropdown;
   final TextAlign alignDropdownText;
+  final String? initialValue;
 
   const SuggestionField({
     super.key,
@@ -152,6 +153,7 @@ class SuggestionField extends StatefulWidget {
     this.inputDecoration = const InputDecoration(),
     this.alignDropdown = AlignType.fill,
     this.alignDropdownText = TextAlign.left,
+    this.initialValue,
   });
 
   @override
@@ -162,8 +164,24 @@ class _SuggestionFieldState extends State<SuggestionField> {
   final TextEditingController _controller = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.initialValue != null) {
+      _controller.text = widget.initialValue!;
+    }
+  }
+
+  @override
+  void didUpdateWidget(SuggestionField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialValue != widget.initialValue) {
+      _controller.text = widget.initialValue ?? '';
+    }
+  }
+
+  @override
   void dispose() {
-    _controller;
+    _controller.dispose();
     super.dispose();
   }
 
