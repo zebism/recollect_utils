@@ -369,9 +369,6 @@ class _SimpleMenuState<T> extends State<SimpleMenu<T>> {
   }
 
   OverlayEntry _createOverlayEntry() {
-    final renderBox = context.findRenderObject()! as RenderBox;
-    final size = renderBox.size;
-
     return OverlayEntry(
       builder: (context) => GestureDetector(
         onTap: () {
@@ -387,7 +384,7 @@ class _SimpleMenuState<T> extends State<SimpleMenu<T>> {
                 followerAnchor: Alignment.topLeft,
                 showWhenUnlinked: false,
                 child: SizedBox(
-                  width: widget.width ?? size.width,
+                  width: widget.width,
                   child: Material(
                     elevation: 8,
                     borderRadius: BorderRadius.circular(8),
