@@ -1,6 +1,6 @@
 name: recollect_utils
 description: "All you'll ever need to create windows applications"
-version: 0.2.0
+version: 0.1.0
 publish_to: https://pub.recollect.cc
 homepage: https://recollect.cc
 repository: https://github.com/Seb2104/recollect_utils.git
